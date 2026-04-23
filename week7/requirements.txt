@@ -1,0 +1,5 @@
+Flask
+pymongo
+flasgger
+jsonschema==4.17.3
+python-dotenv
