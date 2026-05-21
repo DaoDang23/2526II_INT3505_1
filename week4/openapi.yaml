@@ -1,0 +1,129 @@
+openapi: 3.0.0
+
+info:
+  title: Book Management API
+  version: 1.0.0
+  description: API quản lý sách dùng Flask + Swagger UI
+
+servers:
+  - url: http://localhost:5000
+
+paths:
+
+  /books:
+    get:
+      summary: Lấy danh sách sách
+      responses:
+        '200':
+          description: Thành công
+
+    post:
+      summary: Tạo sách mới
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+
+      responses:
+        '201':
+          description: Tạo thành công
+
+  /books/{book_id}:
+
+    get:
+      summary: Lấy thông tin 1 sách
+
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Thành công
+
+        '404':
+          description: Không tìm thấy sách
+
+    put:
+      summary: Cập nhật sách
+
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+
+          schema:
+            type: integer
+
+      requestBody:
+        required: true
+
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+
+      responses:
+        '200':
+          description: Cập nhật thành công
+
+    delete:
+      summary: Xóa sách
+
+      parameters:
+        - name: book_id
+          in: path
+          required: true
+
+          schema:
+            type: integer
+
+      responses:
+        '200':
+          description: Xóa thành công
+
+components:
+
+  schemas:
+
+    Book:
+      type: object
+
+      properties:
+        id:
+          type: integer
+
+        title:
+          type: string
+
+        author:
+          type: string
+
+        price:
+          type: number
+
+    BookInput:
+      type: object
+
+      required:
+        - title
+        - author
+        - price
+
+      properties:
+        title:
+          type: string
+
+        author:
+          type: string
+
+        price:
+          type: number
