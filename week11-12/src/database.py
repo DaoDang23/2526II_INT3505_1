@@ -1,9 +1,0 @@
-PROJECTS = []
-
-TASKS = []
-
-EVENTS = []
-
-WEBHOOKS = []
-
-DELIVERIES = []
