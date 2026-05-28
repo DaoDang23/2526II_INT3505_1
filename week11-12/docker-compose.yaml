@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+
+  api:
+
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+
+    ports:
+      - "5013:5013"
+
+    env_file:
+      - .env
